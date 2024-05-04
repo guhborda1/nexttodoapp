@@ -29,9 +29,8 @@ const AddTask = () => {
             checked: false,
             userId: (data?.user as any).id
         });
-
-        setNewTaskValue("");
         setOpenModal(false)
+        setNewTaskValue("");
         router.refresh()
     }
     return (
