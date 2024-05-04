@@ -58,19 +58,19 @@ const Task = ({ task }: TaskProps) => {
 
                     <Drawer>
                         <DrawerTrigger asChild>
-                            <Button className="btn btn-ghost btn-xs"><FiEdit cursor="pointer" size={12} /></Button>
+                            <Button className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
                         </DrawerTrigger>
-                        <DrawerContent className='flex w-full justify-center items-center px-5'>
+                        <DrawerContent className='flex w-full justify-center items-center'>
                             <DrawerHeader className='justify-center items-center !text-center'>
                                 <DrawerTitle className='justify-center items-center !text-center'>Alterar tarefa</DrawerTitle>
                                 <DrawerDescription className='justify-center items-center !text-center'>para alterar basta clicar em Salvar</DrawerDescription>
                             </DrawerHeader>
-                            <div className='w-full mt-5'>
+                            <div className='w-full mt-2 mb-1 px-4'>
                                 {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
                                 <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setTaskToEdit(e.target.value)} value={taskToEdit} className="w-full " />
                             </div>
                             <DrawerFooter className='w-full'>
-                                <Button onClick={handleSubmitEditTodo} className='w-full'>Salvar</Button>
+                                <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
                                 <DrawerClose>
                                     <Button variant="outline" className="w-full">Cancelar</Button>
                                 </DrawerClose>

@@ -53,17 +53,17 @@ const AddTask = () => {
                     <div>Adicionar Tarefa</div>
                     <AiOutlinePlus />
                 </button></DrawerTrigger>
-                <DrawerContent className='flex w-full justify-center items-center px-5'>
+                <DrawerContent className='flex w-full justify-center items-center '>
                     <DrawerHeader className='justify-center items-center !text-center'>
                         <DrawerTitle className='justify-center items-center !text-center'>Adicionar nova tarefa</DrawerTitle>
                         <DrawerDescription className='justify-center items-center !text-center'>crie uma nova tarefa</DrawerDescription>
                     </DrawerHeader>
-                    <div className='w-full mt-5'>
+                    <div className='w-full mt-2 mb-1 px-4'>
                         {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
                         <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setNewTaskValue(e.target.value)} value={newTaskValue} className="w-full " />
                     </div>
                     <DrawerFooter className='w-full'>
-                        <Button onClick={handleSubmitTodo} className='w-full'>Salvar</Button>
+                        <Button onClick={handleSubmitTodo} className='w-full bg-blue-700'>Salvar</Button>
                         <DrawerClose>
                             <Button variant="outline" className="w-full">Cancelar</Button>
                         </DrawerClose>
