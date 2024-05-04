@@ -10,15 +10,12 @@ import { signIn, signOut } from 'next-auth/react';
 
 const Home = async () => {
   const session = await getServerSession(authOptions)
-
-  const tasks = await db.task.findMany({
-    where: {
-      userId: (session?.user as any).id,
-    }
-  });
-
-
   if (session) {
+    const tasks = await db.task.findMany({
+      where: {
+        userId: (session?.user as any).id,
+      }
+    });
     return (
       <>
         <div className="flex-col justify-center items-center text-center pt-12">
@@ -49,7 +46,7 @@ const Home = async () => {
       <div className="flex min-h-screen mx-auto max-w-4xl text-center gap-4 flex-col items-center justify-center p-24">
         Bem vindo
         Você não esta logado <br />
-        <button onClick={() => signIn('google')}>Sign in</button>
+        <button onClick={() => signIn('google')}>Entrar</button>
       </div>
     </>
   )
