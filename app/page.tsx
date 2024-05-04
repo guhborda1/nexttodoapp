@@ -32,7 +32,7 @@ const Home = async () => {
 
         </div>
 
-        <main className="flex mx-auto max-w-4xl text-center gap-4 flex-col items-center justify-center pt-24">
+        <main className="flex mx-auto max-w-4xl text-center gap-4 flex-col items-center justify-center pt-24 px-5">
 
           <div className='flex w-full flex-col justify-center gap-4'>
             <h1>Lista de Tarefas</h1>
