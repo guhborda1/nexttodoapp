@@ -6,6 +6,7 @@ import AddTask from './components/AddTask'
 import { getServerSession } from 'next-auth';
 import authOptions from './api/auth/[...nextauth]/options';
 import { signIn, signOut } from 'next-auth/react';
+import { FiLogOut } from 'react-icons/fi';
 
 
 const Home = async () => {
@@ -23,6 +24,7 @@ const Home = async () => {
           <div className='flex justify-center items-center gap-2'>
             <Image className='rounded-full' src={session?.user?.image ? session?.user?.image : ''} width={50} height={50} alt="user img" />
             {session?.user?.name}
+            <button onClick={() => { signOut() }}><FiLogOut /> Sair</button>
           </div>
 
         </div>
