@@ -1,4 +1,4 @@
-"use client"
+
 import Image from 'next/image'
 import { db } from "@/app/_lib/prisma";
 import TodoList from './components/TodoList'
@@ -24,7 +24,7 @@ const Home = async () => {
           <div className='flex justify-center items-center gap-2'>
             <Image className='rounded-full' src={session?.user?.image ? session?.user?.image : ''} width={50} height={50} alt="user img" />
             {session?.user?.name}
-            <button onClick={() => { signOut() }}><FiLogOut /> Sair</button>
+            <button className='flex gap-3 items-center justify-center' onClick={() => { signOut() }}><FiLogOut /> <div>Sair</div></button>
           </div>
 
         </div>
@@ -44,13 +44,13 @@ const Home = async () => {
   }
 
   return (
-    <>
-      <div className="flex min-h-screen mx-auto max-w-4xl text-center gap-4 flex-col items-center justify-center p-24">
-        Bem vindo
-        Você não esta logado <br />
-        <button onClick={() => signIn('google')}>Entrar</button>
-      </div>
-    </>
+
+    <div className="flex min-h-screen mx-auto max-w-4xl text-center gap-4 flex-col items-center justify-center p-24">
+      Bem vindo<br />
+      Você não esta logado <br />
+      <button onClick={() => signIn('google')}>Entrar</button>
+    </div>
+
   )
 
 }
