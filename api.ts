@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { db } from "./app/_lib/prisma";
 import { ITask } from "./types/tasks";
 import { getServerSession } from 'next-auth';
-import authOptions from "./app/api/auth/[...nextauth]/options";
+import authOptions from './api/auth/[...nextauth]/options';
 interface SaveTodosParams {
     id: string,
     text: string,
@@ -50,17 +50,4 @@ export const deleteTask = async (todo: string) => {
         },
     })
     return todos;
-}
-
-export const getAllTodos = async () => {
-    const data  = await getServerSession(authOptions)
-    if (data) {
-        const tasks = await db.task.findMany({
-            where: {
-                userId: (data?.user as any).id,
-            }
-        });
-        return tasks
-    }
-    return false
 }
