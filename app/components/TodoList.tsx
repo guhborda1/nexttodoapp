@@ -9,12 +9,12 @@ const TodoList = ({ tasks }: TodoListProps) => {
         <>
             {
                 tasks.length > 0 ? (
-                    <div className="overflow-x-auto w-full justify-between items-center flex">
-                        <table className="table w-full items-center">
+                    <div className="overflow-x-auto w-full justify-between">
+                        <table className="table w-full gap-2 ">
                             {/* head */}
-                            <thead>
-                                <tr>
-                                    <th>
+                            <thead className="mb-6">
+                                <tr className="border-b border-solid border-gray-400">
+                                    <th className="flex justify-start">
                                         <label>
                                             <Checkbox />
                                         </label>
@@ -23,7 +23,7 @@ const TodoList = ({ tasks }: TodoListProps) => {
                                     <th className="flex justify-end">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="mt-6">
                                 {tasks.map((task) => (
                                     <Task key={task.id} task={task} />
                                 )).reverse()}

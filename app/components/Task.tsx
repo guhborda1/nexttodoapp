@@ -10,12 +10,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Checkbox } from "@/components/ui/checkbox";
+import { SeparatorHorizontal } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
 interface TaskProps {
     task: ITask;
 }
 const Task = ({ task }: TaskProps) => {
-    console.log(task)
     const router = useRouter()
     const [openModalEdit, setOpenModalEdit] = useState<boolean>(false)
     const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false)
@@ -44,60 +45,63 @@ const Task = ({ task }: TaskProps) => {
         router.refresh();
     }
     return (
-        <tr key={task.id} className="relative w-full justify-center center items-center">
-            <th>
-                <label>
-                    <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
-                    {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
-                </label>
-            </th>
-            {hasChecked ? <td><s>{task.text}</s></td> : <td>{task.text}</td>}
-            <th className="">
-                <div className="flex justify-end gap-1">
+       
+            <tr key={task.id} className="relative w-full justify-center text-left items-center mb-2 mt-5">
+                <th >
+                    <label className="flex justify-start items-center">
+                        <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
+                        {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
+                    </label>
+                </th>
+                {hasChecked ? <td><s>{task.text}</s></td> : <td>{task.text}</td>}
+                <th >
+                    <div className="flex justify-end gap-1">
 
 
-                    <Drawer>
-                        <DrawerTrigger asChild>
-                            <Button className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
-                        </DrawerTrigger>
-                        <DrawerContent className='flex w-full justify-center items-center'>
-                            <DrawerHeader className='justify-center items-center !text-center'>
-                                <DrawerTitle className='justify-center items-center !text-center'>Alterar tarefa</DrawerTitle>
-                                <DrawerDescription className='justify-center items-center !text-center'>para alterar basta clicar em Salvar</DrawerDescription>
-                            </DrawerHeader>
-                            <div className='w-full mt-2 mb-1 px-4'>
-                                {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
-                                <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setTaskToEdit(e.target.value)} value={taskToEdit} className="w-full " />
-                            </div>
-                            <DrawerFooter className='w-full'>
-                                <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
-                                <DrawerClose>
-                                    <Button variant="outline" className="w-full">Cancelar</Button>
-                                </DrawerClose>
-                            </DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
+                        <Drawer>
+                            <DrawerTrigger asChild>
+                                <Button className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
+                            </DrawerTrigger>
+                            <DrawerContent className='flex w-full justify-center items-center'>
+                                <DrawerHeader className='justify-center items-center !text-center'>
+                                    <DrawerTitle className='justify-center items-center !text-center'>Alterar tarefa</DrawerTitle>
+                                    <DrawerDescription className='justify-center items-center !text-center'>para alterar basta clicar em Salvar</DrawerDescription>
+                                </DrawerHeader>
+                                <div className='w-full mt-2 mb-1 px-4'>
+                                    {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
+                                    <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setTaskToEdit(e.target.value)} value={taskToEdit} className="w-full " />
+                                </div>
+                                <DrawerFooter className='w-full'>
+                                    <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
+                                    <DrawerClose>
+                                        <Button variant="outline" className="w-full">Cancelar</Button>
+                                    </DrawerClose>
+                                </DrawerFooter>
+                            </DrawerContent>
+                        </Drawer>
 
-                    <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                            <Button variant="outline" className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                            <AlertDialogHeader>
-                                <AlertDialogTitle>Você deseja apagar tarefa?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    Essa ação não pode ser desfeita!
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={handleDeleteTodo}>Continue</AlertDialogAction>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
-                </div>
-            </th>
-        </tr>
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button variant="outline" className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>Você deseja apagar tarefa?</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        Essa ação não pode ser desfeita!
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                    <AlertDialogAction onClick={handleDeleteTodo}>Continue</AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+                    </div>
+                </th>
+            </tr>
+        
+
     )
 }
 export default Task
