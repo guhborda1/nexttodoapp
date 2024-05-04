@@ -23,7 +23,7 @@ const TodoList = ({ tasks }: TodoListProps) => {
                                     <th className="flex justify-end">Ações</th>
                                 </tr>
                             </thead>
-                            <tbody className="mt-6">
+                            <tbody className="flex-col gap-3 mt-3">
                                 {tasks.map((task) => (
                                     <Task key={task.id} task={task} />
                                 )).reverse()}
