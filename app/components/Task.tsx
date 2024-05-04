@@ -53,7 +53,7 @@ const Task = ({ task }: TaskProps) => {
                         {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
                     </label>
                 </th>
-                {hasChecked ? <td ><s><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td> : <td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>}
+                {hasChecked ? <td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td> : <td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>}
                 <th >
                     <div className="flex justify-end gap-1">
 

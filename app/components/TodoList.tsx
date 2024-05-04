@@ -19,7 +19,7 @@ const TodoList = ({ tasks }: TodoListProps) => {
                                             <Checkbox />
                                         </label>
                                     </th>
-                                    <th className="text-left">Tarefa</th>
+                                    <th className="ml-2 text-left">Tarefa</th>
                                     <th className="flex justify-end">Ações</th>
                                 </tr>
                             </thead>
