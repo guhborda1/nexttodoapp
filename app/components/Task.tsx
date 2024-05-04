@@ -44,7 +44,7 @@ const Task = ({ task }: TaskProps) => {
         router.refresh();
     }
     return (
-        <tr key={task.id} className="relative w-full">
+        <tr key={task.id} className="relative w-full justify-center center items-center">
             <th>
                 <label>
                     <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />

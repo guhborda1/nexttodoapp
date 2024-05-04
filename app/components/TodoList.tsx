@@ -1,5 +1,6 @@
 import { ITask } from "@/types/tasks"
 import Task from "./Task"
+import { Checkbox } from "@/components/ui/checkbox"
 interface TodoListProps {
     tasks: ITask[]
 }
@@ -8,14 +9,14 @@ const TodoList = ({ tasks }: TodoListProps) => {
         <>
             {
                 tasks.length > 0 ? (
-                    <div className="overflow-x-auto w-full justify-between flex">
-                        <table className="table w-full">
+                    <div className="overflow-x-auto w-full justify-between items-center flex">
+                        <table className="table w-full items-center">
                             {/* head */}
                             <thead>
                                 <tr>
                                     <th>
                                         <label>
-                                            <input type="checkbox" className="checkbox" />
+                                            <Checkbox />
                                         </label>
                                     </th>
                                     <th>Tarefa</th>
