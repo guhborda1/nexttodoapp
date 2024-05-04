@@ -3,37 +3,40 @@ import Task from "./Task"
 interface TodoListProps {
     tasks: ITask[]
 }
-const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
+const TodoList = ({ tasks }: TodoListProps) => {
     return (
-        <div className="overflow-x-auto w-full">
-
-            {tasks.length > 0 ? (
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>
-                                <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label>
-                            </th>
-                            <th>Tarefa</th>
-                            <th className="flex justify-end">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tasks.map((task) => (
-                            <Task key={task.id} task={task} />
-                        )).reverse()}
-
-
-                    </tbody>
+        <>
+            {
+                tasks.length > 0 ? (
+                    <div className="overflow-x-auto w-full justify-between flex">
+                        <table className="table w-full">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label>
+                                            <input type="checkbox" className="checkbox" />
+                                        </label>
+                                    </th>
+                                    <th>Tarefa</th>
+                                    <th className="flex justify-end">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {tasks.map((task) => (
+                                    <Task key={task.id} task={task} />
+                                )).reverse()}
 
 
-                </table>
-            ) : (<div className="h2">Adicione sua primeira tarefa!</div>)}
+                            </tbody>
 
-        </div>
+
+                        </table>
+                    </div>
+                ) : (<div className="overflow-x-auto w-full justify-center flex">
+                    <div className="h2 text-center">Adicione sua primeira tarefa!</div></div>)
+            }
+        </>
     )
 }
 export default TodoList

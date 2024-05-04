@@ -5,6 +5,11 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi'
 import { Modal } from "./Modal";
 import { useRouter } from "next/navigation";
 import { deleteTask, updateTask } from "@/api";
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface TaskProps {
     task: ITask;
@@ -16,7 +21,7 @@ const Task = ({ task }: TaskProps) => {
     const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false)
     const [taskToEdit, setTaskToEdit] = useState<string>(task.text)
     const [hasChecked, setHasChecked] = useState<boolean>(task.checked)
-    const onChangeCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeCheckBox = () => {
         const updatedChecked = !task.checked;
         setHasChecked(updatedChecked);
         handleUpdateCheckbox()
@@ -24,58 +29,72 @@ const Task = ({ task }: TaskProps) => {
     const handleUpdateCheckbox = async () => {
         const updatedChecked = !task.checked;
         setHasChecked(updatedChecked);
-
         await updateTask({ id: task.id, text: task.text, checked: updatedChecked });
-        console.log("After updateTodo:", updatedChecked);
         router.refresh()
     };
-    const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
-        e.preventDefault();
+    const handleSubmitEditTodo = async () => {
 
         await updateTask({ id: task.id, text: taskToEdit, checked: hasChecked });
         setTaskToEdit(taskToEdit);
         setOpenModalEdit(false);
         router.refresh();
     };
-    const handleDeleteTodo: FormEventHandler<HTMLFormElement> = async () => {
+    const handleDeleteTodo = async () => {
         await deleteTask(task.id)
+        router.refresh();
     }
     return (
-        <tr key={task.id} className="relative">
+        <tr key={task.id} className="relative w-full">
             <th>
                 <label>
-                    <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" />
+                    <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
+                    {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
                 </label>
             </th>
             {hasChecked ? <td><s>{task.text}</s></td> : <td>{task.text}</td>}
-
             <th className="">
-                <div className="flex justify-end">
-                    <a onClick={() => { setOpenModalEdit(true) }} className="btn btn-ghost btn-xs"><FiEdit cursor="pointer" size={12} /></a>
-                    <Modal modalOpen={openModalEdit} setModalOpen={setOpenModalEdit}>
-                        <form onSubmit={handleSubmitEditTodo}>
-                            <h3>Editar Tarefa</h3>
-                            <div className='w-full mt-5 join mx-auto justify-center'>
+                <div className="flex justify-end gap-1">
 
-                                <input value={taskToEdit} type="text" onChange={e => setTaskToEdit(e.target.value)} placeholder="Type here" className="input input-bordered w-full max-w-xs join-item" />
-                                <button className='btn join-item' type='submit'>Salvar</button>
 
+                    <Drawer>
+                        <DrawerTrigger asChild>
+                            <Button className="btn btn-ghost btn-xs"><FiEdit cursor="pointer" size={12} /></Button>
+                        </DrawerTrigger>
+                        <DrawerContent className='flex w-full justify-center items-center px-5'>
+                            <DrawerHeader className='justify-center items-center !text-center'>
+                                <DrawerTitle className='justify-center items-center !text-center'>Alterar tarefa</DrawerTitle>
+                                <DrawerDescription className='justify-center items-center !text-center'>para alterar basta clicar em Salvar</DrawerDescription>
+                            </DrawerHeader>
+                            <div className='w-full mt-5 px-5'>
+                                {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
+                                <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setTaskToEdit(e.target.value)} value={taskToEdit} className="w-full " />
                             </div>
-                        </form>
-                    </Modal>
-                    <a className="btn btn-ghost btn-xs" onClick={() => { setOpenModalDeleted(true) }}><FiTrash2 cursor="pointer" size={12} /></a>
-                    <Modal modalOpen={openModalDeleted} setModalOpen={setOpenModalDeleted}>
-                        <form className="text-center py-5" onSubmit={handleDeleteTodo}>
-                            <h3>Tem Certeza que deseja excluir essa tarefa?</h3>
-                            <div className='w-full mt-5 join mx-auto justify-center'>
+                            <DrawerFooter className='w-full'>
+                                <Button onClick={handleSubmitEditTodo} className='w-full'>Salvar</Button>
+                                <DrawerClose>
+                                    <Button variant="outline" className="w-full">Cancelar</Button>
+                                </DrawerClose>
+                            </DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
 
-                                <button className='btn join-item' type='submit'>Excluir</button>
-                                <button className='btn btn-primary join-item' onClick={() => setOpenModalDeleted(false)}>Cancelar</button>
-
-
-                            </div>
-                        </form>
-                    </Modal>
+                    <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <Button variant="outline" className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                            <AlertDialogHeader>
+                                <AlertDialogTitle>Você deseja apagar tarefa?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                    Essa ação não pode ser desfeita!
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction onClick={handleDeleteTodo}>Continue</AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
                 </div>
             </th>
         </tr>
