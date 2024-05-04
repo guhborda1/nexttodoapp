@@ -1,4 +1,4 @@
-
+"use client"
 import Image from 'next/image'
 import { db } from "@/app/_lib/prisma";
 import TodoList from './components/TodoList'
