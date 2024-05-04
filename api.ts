@@ -2,8 +2,6 @@
 import { useSession } from "next-auth/react";
 import { db } from "./app/_lib/prisma";
 import { ITask } from "./types/tasks";
-import { getServerSession } from 'next-auth';
-import authOptions from './api/auth/[...nextauth]/options';
 interface SaveTodosParams {
     id: string,
     text: string,
