@@ -3,13 +3,14 @@ import Image from 'next/image'
 import { db } from "@/app/_lib/prisma";
 import TodoList from './components/TodoList'
 import AddTask from './components/AddTask'
-
+import { getServerSession } from 'next-auth';
+import authOptions from './api/auth/[...nextauth]/options';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { FiLogOut } from 'react-icons/fi';
 
 
 const Home = async () => {
-  const { data } = useSession()
+  const { data } = await useSession()
   if (data) {
     const tasks = await db.task.findMany({
       where: {
@@ -25,7 +26,7 @@ const Home = async () => {
           <div className='flex justify-center items-center gap-2'>
             <Image className='rounded-full' src={data?.user?.image ? data?.user?.image : ''} width={50} height={50} alt="user img" />
             {data?.user?.name}
-            <button className='flex gap-3 items-center justify-center' onClick={() => signOut()}><FiLogOut /> <div>Sair</div></button>
+            <button className='flex gap-3 items-center justify-center' onClick={() => { signOut() }}><FiLogOut /> <div>Sair</div></button>
           </div>
 
         </div>
