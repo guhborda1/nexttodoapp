@@ -58,7 +58,7 @@ const AddTask = () => {
                         <DrawerTitle className='justify-center items-center !text-center'>Adicionar nova tarefa</DrawerTitle>
                         <DrawerDescription className='justify-center items-center !text-center'>crie uma nova tarefa</DrawerDescription>
                     </DrawerHeader>
-                    <div className='w-full mt-5 px-5'>
+                    <div className='w-full mt-5'>
                         {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
                         <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setNewTaskValue(e.target.value)} value={newTaskValue} className="w-full " />
                     </div>
