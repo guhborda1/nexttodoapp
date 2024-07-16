@@ -92,7 +92,7 @@ const Task = ({ task }: TaskProps) => {
                 <footer className='w-full px-4'>
                     <Button onClick={handleDeleteTodo} className='w-full bg-blue-700'>Excluir Tarefa</Button>
 
-                    <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
+                    <Button onClick={() => setOpenModalDeleted(false)} variant="outline" className="w-full">Cancelar</Button>
 
                 </footer>
 
