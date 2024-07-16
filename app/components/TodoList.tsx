@@ -34,7 +34,7 @@ const TodoList = ({ tasks }: TodoListProps) => {
                         </TableHeader>
                         <TableBody>
                             {tasks.map((task) => (
-                                <Task task={task} />
+                                <Task key={task.id} task={task} />
                             ))}
                         </TableBody>
                         
