@@ -89,7 +89,7 @@ const Task = ({ task }: TaskProps) => {
                     {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
                     <p>Essa ação é irreversível</p>
                 </div>
-                <footer className='w-full px-4'>
+                <footer className='w-full px-4 gap-1'>
                     <Button onClick={handleDeleteTodo} className='w-full bg-blue-700'>Excluir Tarefa</Button>
 
                     <Button onClick={() => setOpenModalDeleted(false)} variant="outline" className="w-full">Cancelar</Button>
