@@ -34,12 +34,7 @@ const TodoList = ({ tasks }: TodoListProps) => {
                         </TableHeader>
                         <TableBody className="w-full">
                             {tasks.map((task) => (
-                                <TableRow key={task.id}>
-                                    <TableCell>{task.checked}</TableCell>
-                                    <TableCell className="font-medium">{task.text}</TableCell>
-                                    <TableCell className="font-medium"></TableCell>
-
-                                </TableRow>
+                                <Task task={task} />
                             ))}
                         </TableBody>
                         <TableFooter>
