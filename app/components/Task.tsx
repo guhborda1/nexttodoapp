@@ -83,13 +83,13 @@ const Task = ({ task }: TaskProps) => {
                         <Button variant="link"><EllipsisIcon /></Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuItem asChild>
-                            <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'outline'}><FiEdit cursor="pointer" size={12} />
+                        <DropdownMenuItem className="w-full" asChild>
+                            <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'link'}><FiEdit cursor="pointer" size={12} />
                                 <span>Editar</span>
                             </Button>
                         </DropdownMenuItem>
-                        <DropdownMenuItem asChild>
-                            <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
+                        <DropdownMenuItem className="w-full" asChild>
+                            <Button variant="link" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
 
