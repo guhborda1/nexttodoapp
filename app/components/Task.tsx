@@ -47,8 +47,8 @@ const Task = ({ task }: TaskProps) => {
         router.refresh();
     }
     return (
-        <>
-            <TableRow>
+        <>{task.checked ? (
+            <TableRow className="bg-gray-400">
                 <TableCell><label className="flex justify-start items-center">
                     <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
                     {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
@@ -68,6 +68,27 @@ const Task = ({ task }: TaskProps) => {
 
                 </TableCell>
             </TableRow>
+        ) : (<TableRow>
+            <TableCell><label className="flex justify-start items-center">
+                <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
+                {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
+            </label>
+            </TableCell>
+            <TableCell>
+                {hasChecked ? (<td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td>) : (<td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>)}
+            </TableCell>
+            <TableCell className="text-right flex gap-2 justify-end">
+
+
+                <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
+
+
+
+                <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
+
+            </TableCell>
+        </TableRow>)}
+
             <ResponsiveDialog isOpen={openModalEdit} setIsOpen={setOpenModalEdit} title="Alterar Tarefa" description="tem certeza que deseja alterar a tarefa?">
 
 
