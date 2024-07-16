@@ -32,17 +32,12 @@ const TodoList = ({ tasks }: TodoListProps) => {
 
                             </TableRow>
                         </TableHeader>
-                        <TableBody className="w-full">
+                        <TableBody>
                             {tasks.map((task) => (
                                 <Task task={task} />
                             ))}
                         </TableBody>
-                        <TableFooter>
-                            <TableRow>
-                                <TableCell colSpan={3}>Total</TableCell>
-                                <TableCell className="text-right">$2,500.00</TableCell>
-                            </TableRow>
-                        </TableFooter>
+                        
                     </Table>
                 ) : (<div className="overflow-x-auto w-full justify-center flex">
                     <div className="h2 text-center">Adicione sua primeira tarefa!</div></div>)
