@@ -41,9 +41,9 @@ const AddTask = () => {
                 <AiOutlinePlus />
             </Button>
             <ResponsiveDialog isOpen={openModal} setIsOpen={setOpenModal} title="Criar" description={'nova tarefa'}>
-                <form onSubmit={handleSubmitTodo}>
+                <form onSubmit={handleSubmitTodo} className='px-4'>
                     <h3>Adicionar Nova Tarefa</h3>
-                    <div className='w-full mt-5 join mx-auto justify-center px-4'>
+                    <div className='w-full mt-5 join mx-auto justify-center'>
                         <div className='w-full mt-2 mb-1'>
                             {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
                             <Input type="text" placeholder="Digite sua tarefa aqui" onChange={e => setNewTaskValue(e.target.value)} value={newTaskValue} className="w-full " />
