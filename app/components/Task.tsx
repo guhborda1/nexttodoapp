@@ -10,11 +10,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { SeparatorHorizontal } from "lucide-react";
+import { EllipsisIcon, SeparatorHorizontal } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { ResponsiveDialog } from "./Modal";
-import { DropdownMenu, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 interface TaskProps {
     task: ITask;
@@ -79,14 +79,19 @@ const Task = ({ task }: TaskProps) => {
             <TableCell className="text-right flex gap-2 justify-end">
 
                 <DropdownMenu>
-                    <DropdownMenuItem asChild>
-                        <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'outline'}><FiEdit cursor="pointer" size={12} />
-                            <span>Editar</span>
-                        </Button>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                        <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
-                    </DropdownMenuItem>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="outline"><EllipsisIcon /></Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        <DropdownMenuItem asChild>
+                            <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'outline'}><FiEdit cursor="pointer" size={12} />
+                                <span>Editar</span>
+                            </Button>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
+                        </DropdownMenuItem>
+                    </DropdownMenuContent>
 
                 </DropdownMenu>
 
