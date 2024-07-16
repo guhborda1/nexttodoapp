@@ -101,7 +101,7 @@ const Task = ({ task }: TaskProps) => {
                             </Button>
                         </DropdownMenuItem>
                         <DropdownMenuItem className="w-full tex-left" asChild>
-                            <Button className="tex-left" variant="ghost" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
+                            <Button className="tex-left" variant="ghost" onClick={() => setOpenModalDeleted(!openModalDeleted)} ><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
 
