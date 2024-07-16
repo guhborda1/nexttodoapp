@@ -26,8 +26,8 @@ const TodoList = ({ tasks }: TodoListProps) => {
                         <TableCaption>Lista de Tarefas</TableCaption>
                         <TableHeader className="w-full">
                             <TableRow className={`w-full`}>
-                                <TableHead className="w-[100px]"><Checkbox /></TableHead>
-                                <TableHead >Tarefa</TableHead>
+                                <TableHead><Checkbox /></TableHead>
+                                <TableHead className="w-[100px]">Tarefa</TableHead>
                                 <TableHead className="text-right">Actions</TableHead>
 
                             </TableRow>
