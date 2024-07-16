@@ -49,6 +49,7 @@ const Task = ({ task }: TaskProps) => {
     }
     return (
         <>{task.checked ? (
+
             <TableRow className="bg-[#f1f5f980]">
                 <TableCell><label className="flex justify-start items-center">
                     <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
@@ -60,11 +61,22 @@ const Task = ({ task }: TaskProps) => {
                 </TableCell>
                 <TableCell className="text-right flex gap-2 justify-end">
 
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="link"><EllipsisIcon /></Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuItem className="w-full tex-left" asChild>
+                                <Button className="tex-left" onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'ghost'}><FiEdit cursor="pointer" size={12} />
+                                    <span>Editar</span>
+                                </Button>
+                            </DropdownMenuItem>
+                            <DropdownMenuItem className="w-full tex-left" asChild>
+                                <Button className="tex-left" variant="ghost" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
 
-                    <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
-
-                    <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
-
+                    </DropdownMenu>
                 </TableCell>
             </TableRow>
         ) : (<TableRow>
@@ -106,7 +118,7 @@ const Task = ({ task }: TaskProps) => {
                 </div>
                 <footer className='w-full flex gap-1 mt-2 px-4'>
                     <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
-                    
+
 
                 </footer>
 
