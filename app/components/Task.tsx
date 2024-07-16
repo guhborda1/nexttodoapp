@@ -79,12 +79,11 @@ const Task = ({ task }: TaskProps) => {
 
 
                 <Button variant="outline" onClick={() => setOpenModalDeleted} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
-                <ResponsiveDialog isOpen={openModalDeleted} setIsOpen={setOpenModalDeleted} title="Alterar Tarefa" description="tem certeza que deseja alterar a tarefa?">
+                <ResponsiveDialog isOpen={openModalDeleted} setIsOpen={setOpenModalDeleted} title="Deletar tarefa" description="tem certeza que deseja deletar a tarefa?">
 
 
                     <div className='w-full mt-2 mb-1 px-4'>
                         {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
-                        <h5>Tem certeza que deseja Deletar a Tarefa?</h5>
                         <p>Essa ação é irreversível</p>
                     </div>
                     <footer className='w-full'>
