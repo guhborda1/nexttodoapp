@@ -28,7 +28,7 @@ const TodoList = ({ tasks }: TodoListProps) => {
                             <TableRow className={`w-full`}>
                                 <TableHead className="w-[100px]"><Checkbox /></TableHead>
                                 <TableHead >Tarefa</TableHead>
-                                <TableHead>Actions</TableHead>
+                                <TableHead className="text-right">Actions</TableHead>
 
                             </TableRow>
                         </TableHeader>
