@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { SeparatorHorizontal } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { TableCell } from "@/components/ui/table";
+import { TableCell, TableRow } from "@/components/ui/table";
 import { ResponsiveDialog } from "./Modal";
 
 interface TaskProps {
@@ -48,7 +48,7 @@ const Task = ({ task }: TaskProps) => {
     }
     return (
 
-        <>
+        <TableRow>
             <TableCell><label className="flex justify-start items-center">
                 <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
                 {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
@@ -57,7 +57,7 @@ const Task = ({ task }: TaskProps) => {
             <TableCell>
                 {hasChecked ? (<td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td>) : (<td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>)}
             </TableCell>
-            <TableCell>
+            <TableCell className="text-right">
 
 
                 <Button onClick={() => { setOpenModalEdit }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
@@ -96,7 +96,7 @@ const Task = ({ task }: TaskProps) => {
 
                 </ResponsiveDialog>
             </TableCell>
-        </>
+        </TableRow>
 
     )
 }
