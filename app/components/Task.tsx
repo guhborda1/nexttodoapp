@@ -57,7 +57,8 @@ const Task = ({ task }: TaskProps) => {
             <TableCell>
                 {hasChecked ? (<td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td>) : (<td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>)}
             </TableCell>
-            <TableCell><div className="flex justify-end gap-1">
+            <TableCell>
+
 
                 <Button onClick={() => { setOpenModalEdit }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
                 <ResponsiveDialog isOpen={openModalEdit} setIsOpen={setOpenModalEdit} title="Alterar Tarefa" description="tem certeza que deseja alterar a tarefa?">
@@ -94,7 +95,7 @@ const Task = ({ task }: TaskProps) => {
                     </footer>
 
                 </ResponsiveDialog>
-            </div></TableCell>
+            </TableCell>
         </>
 
     )
