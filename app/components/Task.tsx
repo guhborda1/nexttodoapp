@@ -71,11 +71,11 @@ const Task = ({ task }: TaskProps) => {
             <ResponsiveDialog isOpen={openModalEdit} setIsOpen={setOpenModalEdit} title="Alterar Tarefa" description="tem certeza que deseja alterar a tarefa?">
 
 
-                <div className='w-full mt-2 mb-1 px-4'>
+                <div className='w-full mt-2 mb-2'>
                     {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
                     <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setTaskToEdit(e.target.value)} value={taskToEdit} className="w-full " />
                 </div>
-                <footer className='w-full flex gap-5'>
+                <footer className='w-full flex gap-5 mt-2'>
                     <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
 
                     <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
