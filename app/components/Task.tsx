@@ -60,11 +60,11 @@ const Task = ({ task }: TaskProps) => {
                 <TableCell className="text-right flex gap-5">
 
 
-                    <Button onClick={() => { setOpenModalEdit }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
+                    <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
 
 
 
-                    <Button variant="outline" onClick={() => setOpenModalDeleted} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
+                    <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
 
                 </TableCell>
             </TableRow>
