@@ -49,7 +49,7 @@ const AddTask = () => {
                             <Input type="text" placeholder="Digite sua tarefa aqui" onChange={e => setNewTaskValue(e.target.value)} value={newTaskValue} className="w-full " />
                         </div>
                         <Button className='btn bg-blue-700 join-item w-full mt-5' type='submit'>Salvar</Button>
-                        <Button onClick={() => setOpenModal(false)} variant="outline" className="w-full">Cancelar</Button>
+                        
 
 
                     </div>

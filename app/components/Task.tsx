@@ -106,7 +106,7 @@ const Task = ({ task }: TaskProps) => {
                 </div>
                 <footer className='w-full flex gap-1 mt-2 px-4'>
                     <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
-                    <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
+                    
 
                 </footer>
 
@@ -121,7 +121,6 @@ const Task = ({ task }: TaskProps) => {
                 <footer className='w-full px-4 gap-1'>
                     <Button onClick={handleDeleteTodo} className='w-full bg-blue-700'>Excluir Tarefa</Button>
 
-                    <Button onClick={() => setOpenModalDeleted(false)} variant="outline" className="w-full">Cancelar</Button>
 
                 </footer>
 
