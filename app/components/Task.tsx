@@ -47,56 +47,58 @@ const Task = ({ task }: TaskProps) => {
         router.refresh();
     }
     return (
-
-        <TableRow>
-            <TableCell><label className="flex justify-start items-center">
-                <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
-                {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
-            </label>
-            </TableCell>
-            <TableCell>
-                {hasChecked ? (<td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td>) : (<td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>)}
-            </TableCell>
-            <TableCell className="text-right">
-
-
-                <Button onClick={() => { setOpenModalEdit }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
-                <ResponsiveDialog isOpen={openModalEdit} setIsOpen={setOpenModalEdit} title="Alterar Tarefa" description="tem certeza que deseja alterar a tarefa?">
+        <>
+            <TableRow>
+                <TableCell><label className="flex justify-start items-center">
+                    <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
+                    {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
+                </label>
+                </TableCell>
+                <TableCell>
+                    {hasChecked ? (<td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td>) : (<td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>)}
+                </TableCell>
+                <TableCell className="text-right flex gap-5">
 
 
-                    <div className='w-full mt-2 mb-1 px-4'>
-                        {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
-                        <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setTaskToEdit(e.target.value)} value={taskToEdit} className="w-full " />
-                    </div>
-                    <footer className='w-full flex gap-5'>
-                        <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
-
-                        <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
-
-                    </footer>
-
-                </ResponsiveDialog>
+                    <Button onClick={() => { setOpenModalEdit }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
 
 
-                <Button variant="outline" onClick={() => setOpenModalDeleted} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
-                <ResponsiveDialog isOpen={openModalDeleted} setIsOpen={setOpenModalDeleted} title="Deletar tarefa" description="tem certeza que deseja deletar a tarefa?">
+
+                    <Button variant="outline" onClick={() => setOpenModalDeleted} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
+
+                </TableCell>
+            </TableRow>
+            <ResponsiveDialog isOpen={openModalEdit} setIsOpen={setOpenModalEdit} title="Alterar Tarefa" description="tem certeza que deseja alterar a tarefa?">
 
 
-                    <div className='w-full mt-2 mb-1 px-4'>
-                        {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
-                        <p>Essa ação é irreversível</p>
-                    </div>
-                    <footer className='w-full'>
-                        <Button onClick={handleDeleteTodo} className='w-full bg-blue-700'>Excluir Tarefa</Button>
+                <div className='w-full mt-2 mb-1 px-4'>
+                    {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
+                    <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setTaskToEdit(e.target.value)} value={taskToEdit} className="w-full " />
+                </div>
+                <footer className='w-full flex gap-5'>
+                    <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
 
-                        <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
+                    <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
 
-                    </footer>
+                </footer>
 
-                </ResponsiveDialog>
-            </TableCell>
-        </TableRow>
+            </ResponsiveDialog>
+            <ResponsiveDialog isOpen={openModalDeleted} setIsOpen={setOpenModalDeleted} title="Deletar tarefa" description="tem certeza que deseja deletar a tarefa?">
 
+
+                <div className='w-full mt-2 mb-1 px-4'>
+                    {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
+                    <p>Essa ação é irreversível</p>
+                </div>
+                <footer className='w-full'>
+                    <Button onClick={handleDeleteTodo} className='w-full bg-blue-700'>Excluir Tarefa</Button>
+
+                    <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
+
+                </footer>
+
+            </ResponsiveDialog>
+        </>
     )
 }
 export default Task
