@@ -48,7 +48,7 @@ const Task = ({ task }: TaskProps) => {
     }
     return (
         <>{task.checked ? (
-            <TableRow className="bg-gray-400">
+            <TableRow className="bg-[#f1f5f980]">
                 <TableCell><label className="flex justify-start items-center">
                     <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
                     {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
@@ -59,10 +59,8 @@ const Task = ({ task }: TaskProps) => {
                 </TableCell>
                 <TableCell className="text-right flex gap-2 justify-end">
 
-
+                    
                     <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
-
-
 
                     <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
 
