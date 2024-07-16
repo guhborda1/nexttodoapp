@@ -80,7 +80,7 @@ const Task = ({ task }: TaskProps) => {
 
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline"><EllipsisIcon /></Button>
+                        <Button variant="link"><EllipsisIcon /></Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuItem asChild>
@@ -94,11 +94,6 @@ const Task = ({ task }: TaskProps) => {
                     </DropdownMenuContent>
 
                 </DropdownMenu>
-
-
-
-                <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
-
             </TableCell>
         </TableRow>)}
 
