@@ -25,7 +25,7 @@ const TodoList = ({ tasks }: TodoListProps) => {
                     <Table>
                         <TableCaption>Lista de Tarefas</TableCaption>
                         <TableHeader className="w-full">
-                            <TableRow className={`fex justify-around`}>
+                            <TableRow className={``}>
                                 <TableHead><Checkbox /></TableHead>
                                 <TableHead className="w-[100px]">Tarefa</TableHead>
                                 <TableHead>Actions</TableHead>
