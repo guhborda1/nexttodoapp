@@ -84,7 +84,9 @@ const Task = ({ task }: TaskProps) => {
                             <span>Editar</span>
                         </Button>
                     </DropdownMenuItem>
-<DropdownMenuItem></DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                        <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
+                    </DropdownMenuItem>
 
                 </DropdownMenu>
 
