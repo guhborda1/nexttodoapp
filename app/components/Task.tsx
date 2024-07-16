@@ -68,7 +68,7 @@ const Task = ({ task }: TaskProps) => {
                         {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
                         <Input type="email" placeholder="Digite sua tarefa aqui" onChange={e => setTaskToEdit(e.target.value)} value={taskToEdit} className="w-full " />
                     </div>
-                    <footer className='w-full'>
+                    <footer className='w-full flex gap-5'>
                         <Button onClick={handleSubmitEditTodo} className='w-full bg-blue-700'>Salvar</Button>
 
                         <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
