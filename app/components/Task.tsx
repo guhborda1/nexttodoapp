@@ -78,10 +78,13 @@ const Task = ({ task }: TaskProps) => {
             </TableCell>
             <TableCell className="text-right flex gap-2 justify-end">
 
-                <DropdownMenu asChild>
-                    <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'outline'}><FiEdit cursor="pointer" size={12} />
-                        <span>Editar</span>
-                    </Button>
+                <DropdownMenu>
+                    <DropdownMenuItem asChild>
+                        <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'outline'}><FiEdit cursor="pointer" size={12} />
+                            <span>Editar</span>
+                        </Button>
+                    </DropdownMenuItem>
+<DropdownMenuItem></DropdownMenuItem>
 
                 </DropdownMenu>
 
