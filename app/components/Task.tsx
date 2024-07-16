@@ -57,7 +57,7 @@ const Task = ({ task }: TaskProps) => {
                 <TableCell>
                     {hasChecked ? (<td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td>) : (<td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>)}
                 </TableCell>
-                <TableCell className="text-right flex gap-5">
+                <TableCell className="text-right flex gap-2 justify-end">
 
 
                     <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
