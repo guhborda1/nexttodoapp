@@ -8,7 +8,7 @@ import { deleteTask, updateTask } from "@/api";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/dialog";
+
 import { Checkbox } from "@/components/ui/checkbox";
 import { SeparatorHorizontal } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -76,23 +76,24 @@ const Task = ({ task }: TaskProps) => {
 
                 </ResponsiveDialog>
 
-                <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                        <Button variant="outline" className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Você deseja apagar tarefa?</AlertDialogTitle>
-                            <AlertDialogDescription>
-                                Essa ação não pode ser desfeita!
-                            </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={handleDeleteTodo}>Continue</AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
+
+                <Button variant="outline" onClick={() => setOpenModalDeleted} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
+                <ResponsiveDialog isOpen={openModalDeleted} setIsOpen={setOpenModalDeleted} title="Alterar Tarefa" description="tem certeza que deseja alterar a tarefa?">
+
+
+                    <div className='w-full mt-2 mb-1 px-4'>
+                        {/* <input value={newTaskValue} type="text" onChange={e => setNewTaskValue(e.target.value)} placeholder="Digite sua tarefa aqui" className="input input-bordered w-full max-w-xs join-item" /> */}
+                        <h5>Tem certeza que deseja Deletar a Tarefa?</h5>
+                        <p>Essa ação é irreversível</p>
+                    </div>
+                    <footer className='w-full'>
+                        <Button onClick={handleDeleteTodo} className='w-full bg-blue-700'>Excluir Tarefa</Button>
+
+                        <Button onClick={() => setOpenModalEdit(false)} variant="outline" className="w-full">Cancelar</Button>
+
+                    </footer>
+
+                </ResponsiveDialog>
             </div></TableCell>
         </>
 
