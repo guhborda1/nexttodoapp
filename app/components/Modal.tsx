@@ -1,21 +1,71 @@
-import { AiOutlineClose } from "react-icons/ai";
+import * as React from 'react';
 
-interface ModalProps {
-    modalOpen: boolean;
-    setModalOpen: (open: boolean) => boolean | void;
-    children: React.ReactNode
-}
-export const Modal: React.FC<ModalProps> = ({ modalOpen, setModalOpen, children }) => {
-    return (
-        <>
-            <div className={`modal ${modalOpen ? 'modal-open' : ''}`}>
-                <div className="modal-box overflow-visible pb-10">
-                    <div className="modal-action absolute -right-5 -top-12 ">
-                        <label  onClick={() => setModalOpen(false)} className="btn rounded-full"><AiOutlineClose /></label>
-                    </div>
+import { Button } from '@/components/ui/button';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog';
+import {
+    Drawer,
+    DrawerClose,
+    DrawerContent,
+    DrawerDescription,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
+} from '@/components/ui/drawer';
+import { useMediaQuery } from '@/hooks/use-media-query';
+
+export function ResponsiveDialog({
+    children,
+    isOpen,
+    setIsOpen,
+    title,
+    description,
+}: {
+    children: React.ReactNode;
+    isOpen: boolean;
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    title: string;
+    description?: string;
+}) {
+    const isDesktop = useMediaQuery('(min-width: 768px)');
+
+    if (isDesktop) {
+        return (
+            <Dialog open={isOpen} onOpenChange={setIsOpen}>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>{title}</DialogTitle>
+                        {description && (
+                            <DialogDescription>{description}</DialogDescription>
+                        )}
+                    </DialogHeader>
                     {children}
+                </DialogContent>
+            </Dialog>
+        );
+    }
 
-                </div>
-            </div>
-        </>)
-} 
+    return (
+        <Drawer open={isOpen} onOpenChange={setIsOpen}>
+            <DrawerContent>
+                <DrawerHeader className="text-left">
+                    <DrawerTitle>{title}</DrawerTitle>
+                    {description && <DialogDescription>{description}</DialogDescription>}
+                </DrawerHeader>
+                {children}
+                <DrawerFooter className="pt-2">
+                    <DrawerClose asChild>
+                        <Button variant="outline">Cancel</Button>
+                    </DrawerClose>
+                </DrawerFooter>
+            </DrawerContent>
+        </Drawer>
+    );
+}
