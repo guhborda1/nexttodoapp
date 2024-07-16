@@ -14,6 +14,7 @@ import { SeparatorHorizontal } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { ResponsiveDialog } from "./Modal";
+import { DropdownMenu, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 interface TaskProps {
     task: ITask;
@@ -59,7 +60,7 @@ const Task = ({ task }: TaskProps) => {
                 </TableCell>
                 <TableCell className="text-right flex gap-2 justify-end">
 
-                    
+
                     <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
 
                     <Button variant="outline" onClick={() => setOpenModalDeleted(!openModalDeleted)} className="btn btn-ghost btn-xs"><FiTrash2 cursor="pointer" size={12} /></Button>
@@ -77,8 +78,12 @@ const Task = ({ task }: TaskProps) => {
             </TableCell>
             <TableCell className="text-right flex gap-2 justify-end">
 
+                <DropdownMenu asChild>
+                    <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'outline'}><FiEdit cursor="pointer" size={12} />
+                        <span>Editar</span>
+                    </Button>
 
-                <Button onClick={() => { setOpenModalEdit(!openModalEdit) }} className="btn btn-ghost btn-xs bg-blue-700"><FiEdit cursor="pointer" size={12} /></Button>
+                </DropdownMenu>
 
 
 
