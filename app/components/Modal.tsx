@@ -3,8 +3,10 @@ import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
+    DialogClose,
     DialogContent,
     DialogDescription,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -47,11 +49,11 @@ export function ResponsiveDialog({
                         )}
                     </DialogHeader>
                     {children}
-                    <DrawerFooter className="pt-2">
-                        <DrawerClose asChild>
+                    <DialogFooter className="pt-2">
+                        <DialogClose asChild>
                             <Button variant="outline">Cancel</Button>
-                        </DrawerClose>
-                    </DrawerFooter>
+                        </DialogClose>
+                    </DialogFooter>
                 </DialogContent>
             </Dialog>
         );

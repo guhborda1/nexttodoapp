@@ -48,16 +48,16 @@ const Task = ({ task }: TaskProps) => {
         router.refresh();
     }
     return (
-        <>{task.checked ? (
+        <>
 
-            <TableRow className="bg-[#f1f5f980]">
+            <TableRow className={`${task.checked ?? ('bg-[#f1f5f980]')}`}>
                 <TableCell><label className="flex justify-start items-center">
                     <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
                     {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
                 </label>
                 </TableCell>
                 <TableCell>
-                    {hasChecked ? (<td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td>) : (<td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>)}
+                    {hasChecked ? (<s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s>) : (<p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p>)}
                 </TableCell>
                 <TableCell className="text-right flex gap-2 justify-end">
 
@@ -79,35 +79,7 @@ const Task = ({ task }: TaskProps) => {
                     </DropdownMenu>
                 </TableCell>
             </TableRow>
-        ) : (<TableRow>
-            <TableCell><label className="flex justify-start items-center">
-                <Checkbox id={task.id} checked={task.checked} onCheckedChange={onChangeCheckBox} />
-                {/* <input type="checkbox" checked={task.checked} onChange={onChangeCheckBox} className="checkbox" /> */}
-            </label>
-            </TableCell>
-            <TableCell>
-                {hasChecked ? (<td><s><p className="ml-2 text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></s></td>) : (<td><p className="text-left overflow-hidden text-ellipsis text-nowrap">{task.text}</p></td>)}
-            </TableCell>
-            <TableCell className="text-right flex gap-2 justify-end">
 
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="link"><EllipsisIcon /></Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                        <DropdownMenuItem className="w-full tex-left" asChild>
-                            <Button className="tex-left" onClick={() => { setOpenModalEdit(!openModalEdit) }} variant={'ghost'}><FiEdit cursor="pointer" size={12} />
-                                <span>Editar</span>
-                            </Button>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="w-full tex-left" asChild>
-                            <Button className="tex-left" variant="ghost" onClick={() => setOpenModalDeleted(!openModalDeleted)} ><FiTrash2 cursor="pointer" size={12} /><span>Deletar</span></Button>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-
-                </DropdownMenu>
-            </TableCell>
-        </TableRow>)}
 
             <ResponsiveDialog isOpen={openModalEdit} setIsOpen={setOpenModalEdit} title="Alterar Tarefa" description="tem certeza que deseja alterar a tarefa?">
 
