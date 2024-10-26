@@ -9,16 +9,23 @@ import { signIn, signOut } from 'next-auth/react';
 import { FiLogOut } from 'react-icons/fi';
 import { LogOutBtn } from './components/LogOutBtn';
 import { LogInBtn } from './components/LogInBtn';
-
-
-const Home = async () => {
+import { fetchTodos } from './_actions/getTodos';
+export interface PageProps {
+  params: { [key: string]: string | string[] | undefined },
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+const PAGE_SIZE = 8;
+const Home = async (props: PageProps) => {
+  const pageNumber = Number(props?.searchParams?.page || 1)
+  const filter = (props?.searchParams?.filter) as string || 'createdAt'
+  const orderby = (props?.searchParams?.orderby as 'asc' | 'desc') || 'desc'
+  const filters = { filter, orderby }
+  const take = PAGE_SIZE;
+  const skip = (pageNumber - 1) * take;
   const session = await getServerSession(authOptions)
-  if (session) {
-    const tasks = await db.task.findMany({
-      where: {
-        userId: (session?.user as any).id,
-      }
-    });
+  if (session?.user) {
+    const { data, metadata } = await fetchTodos({ take, skip, filters });
+
 
     return (
       <>
@@ -39,7 +46,7 @@ const Home = async () => {
             <AddTask />
           </div>
 
-          <TodoList tasks={tasks} />
+          <TodoList tasks={data} />
 
         </main>
       </>
