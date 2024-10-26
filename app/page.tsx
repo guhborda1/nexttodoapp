@@ -10,6 +10,7 @@ import { FiLogOut } from 'react-icons/fi';
 import { LogOutBtn } from './components/LogOutBtn';
 import { LogInBtn } from './components/LogInBtn';
 import { fetchTodos } from './_actions/getTodos';
+import { PaginationComponent } from './components/pagination';
 export interface PageProps {
   params: { [key: string]: string | string[] | undefined },
   searchParams?: { [key: string]: string | string[] | undefined }
@@ -47,7 +48,7 @@ const Home = async (props: PageProps) => {
           </div>
 
           <TodoList tasks={data} />
-
+          {metadata.totalPages > 1 && (<PaginationComponent {...props?.searchParams} {...metadata} />)}
         </main>
       </>
     )

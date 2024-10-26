@@ -39,6 +39,8 @@ const TodoList = ({ tasks }: TodoListProps) => {
                         </TableBody>
 
                     </Table>
+
+
                 ) : (<div className="overflow-x-auto w-full justify-center flex">
                     <div className="h2 text-center">Adicione sua primeira tarefa!</div></div>)
             }
